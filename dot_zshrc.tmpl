@@ -115,3 +115,8 @@ fi
 if [[ -d .zsh/zsh-syntax-highlighting ]] ; then
   source .zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+
+
+if [[ -f "$HOME/.config/zsh/aliases.zsh" ]]; then
+  source "$HOME/.config/zsh/aliases.zsh"
+fi
