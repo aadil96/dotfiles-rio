@@ -3,6 +3,7 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
 
 [data]
   remote = {{ $remote }}
+  git_signingKey = "78F642760954E0F9"
 
 {{- if not $remote }}
 [git]
