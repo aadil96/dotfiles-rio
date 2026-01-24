@@ -1,0 +1,50 @@
+# Ripgrep Configuration File
+# Place custom ripgrep settings here
+
+# File type settings
+--type-add
+web:*.{html,css,js,ts,tsx,jsx,vue,svelte}
+--type-add
+config:*.{toml,yaml,yml,json,ini,cfg}
+--type-add
+docs:*.{md,txt,rst}
+
+# Search options
+--smart-case
+--hidden
+--follow
+--max-filesize=10M
+
+# Exclusions
+--glob
+!.git/
+--glob
+!node_modules/
+--glob
+!target/
+--glob
+!dist/
+--glob
+!build/
+--glob
+!.cache/
+--glob
+!*.log
+--glob
+!coverage/
+--glob
+!.venv/
+--glob
+!venv/
+--glob
+!env/
+
+# Output formatting
+--line-number
+--heading
+--color=always
+--pretty
+
+# Performance
+--threads=0
+--max-columns-preview=200

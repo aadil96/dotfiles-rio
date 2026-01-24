@@ -1,0 +1,55 @@
+# SSH Configuration
+# This file manages SSH client connections
+
+# Global settings
+Host *
+    # Send keepalive packets to prevent connection timeouts
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+    
+    # Disable X11 forwarding by default
+    ForwardX11 no
+    
+    # Use SSH agent for authentication
+    ForwardAgent yes
+    
+    # Compression for faster transfers
+    Compression yes
+    
+    # Connection settings
+    ConnectTimeout 30
+    ConnectionAttempts 3
+
+# Example host configurations
+# Uncomment and modify as needed
+
+# GitHub
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+
+# Personal server
+# Host personal-server
+#     HostName server.example.com
+#     User username
+#     Port 22
+#     IdentityFile ~/.ssh/id_ed25519_personal
+
+# Work server with specific key
+# Host work-server
+#     HostName work.company.com
+#     User work-username
+#     Port 2222
+#     IdentityFile ~/.ssh/work_key
+#     ForwardX11 yes
+
+# Local development
+# Host localhost-dev
+#     HostName 127.0.0.1
+#     User dev
+#     Port 2222
+#     IdentityFile ~/.ssh/id_ed25519_dev
+#     StrictHostKeyChecking no
+#     UserKnownHostsFile /dev/null

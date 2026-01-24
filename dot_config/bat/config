@@ -1,0 +1,35 @@
+# Bat Configuration File
+# https://github.com/sharkdp/bat
+
+# Theme
+--theme=base16
+
+# Line numbers
+--line-numbers
+
+# Show line numbers on the left
+--style=numbers,changes,header
+
+# Decorations
+--decorations=always
+
+# Pager settings
+--pager=less -FR
+
+# Tabs
+--tabs=4
+
+# Wrap lines
+--wrap=never
+
+# Terminal width (0 = auto)
+--terminal-width=0
+
+# Use italics for comments
+--italic-text=always
+
+# Grid lines
+--grid=border
+
+# File modifications indicator
+--modified-marker=+

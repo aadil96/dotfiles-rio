@@ -1,0 +1,91 @@
+# FD Ignore File
+# Patterns to exclude from fd searches (similar to .gitignore)
+
+# Version control
+.git
+.gitignore
+.gitmodules
+.svn
+.hg
+
+# Dependencies
+node_modules
+vendor
+bundle
+gems
+.pnpm-store
+.yarn
+.npm
+
+# Build artifacts
+target
+dist
+build
+out
+coverage
+.nyc_output
+.c8_output
+
+# Cache and temporary files
+.cache
+.tmp
+.temp
+*.tmp
+*.temp
+*.log
+*.swp
+*.swo
+*~
+
+# IDE and editor files
+.vscode
+.idea
+*.sublime-*
+.atom
+.venv
+venv
+env
+.conda
+.mypy_cache
+.pytest_cache
+.tox
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Lock files (optional - uncomment if you want to exclude them)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+# Cargo.lock
+# Gemfile.lock
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Large binary files
+*.tar.gz
+*.zip
+*.rar
+*.7z
+*.iso
+*.dmg
+*.pkg
+
+# Documentation build
+docs/_build
+site/_build
+book/_build
