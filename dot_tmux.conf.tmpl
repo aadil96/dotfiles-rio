@@ -39,11 +39,11 @@ bind -r C-j resize-pane -D 5
 bind -r C-h resize-pane -L 5
 bind -r C-l resize-pane -R 5
 
-{{ if and .chezmoi.osRelease (eq .chezmoi.osRelease.id "ubuntu") "debian") -}}
+{{- if and .chezmoi.osRelease (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian") }}
 source /usr/share/powerline/bindings/tmux/powerline.conf
-{{- else if and .chezmoi.osRelease (eq .chezmoi.osRelease.id "fedora") -}}
+{{- else if and .chezmoi.osRelease (eq .chezmoi.osRelease.id "fedora") }}
 source /usr/share/tmux/powerline.conf
-{{- else if eq .chezmoi.os "darwin" -}}
+{{- else if eq .chezmoi.os "darwin" }}
 run-shell "/Users/{{ .chezmoi.username }}/Library/Python/3.10/bin/powerline-daemon -q"
 run-shell "/Users/{{ .chezmoi.username }}/Library/Python/3.10/bin/powerline-config tmux setup"
 {{- end }}
