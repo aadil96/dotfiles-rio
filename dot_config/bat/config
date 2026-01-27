@@ -1,35 +1,34 @@
-# Bat Configuration File
-# https://github.com/sharkdp/bat
+# Dark theme optimized for terminals (Nord or OneHalfDark popular for coding)
+--theme="Nord"
 
-# Theme
---theme=base16
 
-# Line numbers
---line-numbers
+# Style: line numbers, Git changes, full header (filename/size), subtle grid
+--style="numbers,changes,header-filename,header-filesize,grid"
 
-# Show line numbers on the left
---style=numbers,changes,header
 
-# Decorations
---decorations=always
-
-# Pager settings
---pager=less -FR
-
-# Tabs
+# Tabs: 4 spaces (common for Go/Python/Shell/K8s YAML)
 --tabs=4
 
-# Wrap lines
---wrap=never
+# Pager: less with raw ANSI, quit-if-one-screen, no-init (fast for small files)
+--pager="less -RF"
 
-# Terminal width (0 = auto)
---terminal-width=0
-
-# Use italics for comments
+# Enable italics if terminal supports (e.g., for comments)
 --italic-text=always
 
-# Grid lines
---grid=border
+# Always colorize (useful for piping to tmux/screen)
+--color=always
 
-# File modifications indicator
---modified-marker=+
+
+# Map common DevOps files (e.g., YAML configs, Helm, Terraform)
+--map-syntax="*.yaml:yaml"
+--map-syntax="*.yml:yaml"
+--map-syntax="*.tf:Terraform"
+--map-syntax="*.gotmpl:Go HTML Template"
+--map-syntax="Dockerfile:Dockerfile"
+--map-syntax="*.toml:TOML"
+
+# Squeeze multiple blank lines (clean IaC/logs)
+--squeeze-blank
+
+# Highlight non-printables (handy for configs/logs)
+--show-all
