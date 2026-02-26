@@ -1,3 +1,8 @@
+[[tools."aqua:neovim"]]
+version = "0.11.6"
+backend = "aqua:neovim"
+"platforms.linux-x64" = { checksum = "sha256:2fc90b962327f73a78afbfb8203fd19db8db9cdf4ee5e2bef84704339add89cc", url = "https://github.com/neovim/neovim/releases/download/v0.11.6/nvim-linux-x86_64.tar.gz"}
+
 [[tools.bat]]
 version = "0.25.0"
 backend = "aqua:sharkdp/bat"
