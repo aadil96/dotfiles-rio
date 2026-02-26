@@ -13,13 +13,13 @@ lsd = "1.1.5"
 node = "23.11.0"
 ripgrep = "14.1.1"
 starship = "1.23.0"
-"ubi:nushell/nushell" = { version = "0.108.0", exe = "nu" }
+"github:nushell/nushell" = { version = "0.108.0", exe = "nu" }
 zellij = "0.43.0"
 zoxide = "0.9.8"
 opencode = "1.0.137"
 lazygit = "0.57.0"
 cloudflared = "2025.11.1"
-neovim = "0.11.6"
+"aqua:neovim" = "0.11.6"
 
 [settings]
 experimental = true

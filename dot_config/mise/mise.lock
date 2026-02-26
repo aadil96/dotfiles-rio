@@ -72,6 +72,10 @@ backend = "aqua:cli/cli"
 "platforms.macos-x64" = { checksum = "sha256:83499edd5830f345e01e187e4593a46919bd7440b43c5aabe2442ae918cad9f1", url = "https://github.com/cli/cli/releases/download/v2.82.1/gh_2.82.1_macOS_amd64.zip"}
 "platforms.windows-x64" = { checksum = "sha256:17bb2a19d25887cebd3b0ee2d3a3fdf56791eb0df15cf34b068fac56212f690b", url = "https://github.com/cli/cli/releases/download/v2.82.1/gh_2.82.1_windows_amd64.zip"}
 
+[[tools."github:nushell/nushell"]]
+version = "0.108.0"
+backend = "github:nushell/nushell[exe=nu]"
+
 [[tools.jj]]
 version = "0.34.0"
 backend = "aqua:jj-vcs/jj"
