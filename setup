@@ -2,15 +2,29 @@
 
 set -euo pipefail
 
+REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_NAME="$(basename "$REPO_DIR")"
+
+if [[ "$REPO_NAME" == "dotfiles-rio" ]]; then
+  TARGET_DIR="$HOME/.dotfiles"
+  if [[ -d "$TARGET_DIR" ]]; then
+    echo "Error: $TARGET_DIR already exists. Remove it first or manually manage."
+    exit 1
+  fi
+  echo "Renaming repo from '$REPO_NAME' to '.dotfiles'..."
+  cp -r "$REPO_DIR" "$TARGET_DIR"
+  REPO_DIR="$TARGET_DIR"
+fi
+
 if command -v chezmoi >/dev/null; then
-  chezmoi init --apply --source $PWD
+  chezmoi init --apply --source "$REPO_DIR"
   exit 0
 fi
 
 if command -v mise >/dev/null; then
-  mise exec chezmoi -- chezmoi init --apply --source $PWD
+  mise exec chezmoi -- chezmoi init --apply --source "$REPO_DIR"
   exit 0
 fi
 
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --source $PWD
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --source "$REPO_DIR"
 exit 0

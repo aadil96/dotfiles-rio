@@ -3,7 +3,10 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
 
 [data]
   remote = {{ $remote }}
-  git_signingKey = "78F642760954E0F9"
+  git_signingKey = ""
+  git_user_name = "Your Name"
+  git_user_email = "your@email.com"
+  ssh_key_path = "~/.ssh/id_ed25519"
 
 {{- if not $remote }}
 [git]

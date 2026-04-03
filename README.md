@@ -1,88 +1,111 @@
 # dotfiles
 
-This repository contains my personal dotfiles, managed with [chezmoi](https://www.chezmoi.io/), and designed for seamless use across local, containerized, and cloud development environments. It is structured to work out-of-the-box with:
+Dotfiles managed with [chezmoi](https://www.chezmoi.io/), designed for seamless use across local, containerized, and cloud development environments.
 
-- **chezmoi**: For dotfile management and templating
-- **DevPod**: For reproducible development environments
-- **VS Code Dev Containers**: For local and remote container-based development
-- **GitHub Codespaces**: For cloud-based development
+---
+
+## Quick Start
+
+```sh
+# Clone and setup
+git clone https://github.com/youruser/dotfiles-rio.git ~/.dotfiles
+cd ~/.dotfiles
+./setup
+```
+
+Or with chezmoi directly:
+
+```sh
+chezmoi init https://github.com/youruser/dotfiles-rio
+```
+
+---
+
+## Configuration
+
+Copy `chezmoi.toml.example` to `~/.config/chezmoi/chezmoi.toml` and customize:
+
+```toml
+git_user_name = "Your Name"
+git_user_email = "your@email.com"
+# git_signingKey = ""  # GPG key for commit signing (optional)
+# ssh_key_path = "~/.ssh/id_ed25519"
+```
+
+### Available Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `git_user_name` | "Your Name" | Git user name |
+| `git_user_email` | "your@email.com" | Git user email |
+| `git_signingKey` | "" | GPG key for commit signing (empty = disabled) |
+| `ssh_key_path` | "~/.ssh/id_ed25519" | SSH identity file path |
 
 ---
 
 ## Repository Structure
 
 ```
-├── .chezmoi.toml.tmpl         # chezmoi configuration (templated)
-├── .chezmoiexternals/         # chezmoi-managed external resources (tools, fonts, configs)
-├── .chezmoiscripts/           # chezmoi hook scripts (e.g., install packages)
-├── .devcontainer/             # VS Code Dev Container config (Dockerfile, devcontainer.json)
-├── dot_*                      # Dotfiles (bashrc, gitconfig, tmux, wezterm, zshrc, etc.)
-├── dot_config/                # XDG config files (alacritty, git, k9s, mise, nvim, opencode, starship, zellij)
-├── private_dot_gnupg/         # Private GPG config (not tracked by chezmoi)
-├── setup                      # Bootstrap script for new machines
+.
+├── .chezmoi.toml.tmpl      # chezmoi configuration (templated)
+├── .chezmoiexternals/      # External resources (tools, fonts)
+├── .chezmoiscripts/        # Hook scripts
+├── .devcontainer/         # Dev Container config
+├── dot_*                  # Dotfiles (bashrc, gitconfig, zshrc, etc.)
+├── dot_config/            # XDG config files
+│   ├── mise/              # mise tool versions
+│   ├── nvim/              # Neovim/LazyVim config
+│   ├── starship.toml      # starship prompt config
+│   └── ...
+├── setup                  # Bootstrap script
+└── chezmoi.toml.example   # Config template
 ```
+
+---
+
+## Supported Environments
+
+- **Local**: macOS, Linux, WSL
+- **Remote**: SSH environments
+- **Containers**: Dev Containers, GitHub Codespaces
+- **DevPod**: Integrated
 
 ---
 
 ## Usage
 
-### 1. Bootstrapping (Any Environment)
-
-Clone the repo and run the setup script:
+### Update Dotfiles
 
 ```sh
-./setup
+chezmoi update
+chezmoi apply
 ```
 
-This will:
-- Set your shell to zsh (if available)
-- Install chezmoi (if not present)
-- Apply all dotfiles to your home directory
+### Edit Dotfiles
 
-### 2. chezmoi
+```sh
+chezmoi edit ~/.zshrc
+```
 
-chezmoi manages all dotfiles, templates, and external resources. It detects if you are running in a remote/container/Codespaces environment and adapts accordingly (see `.chezmoi.toml.tmpl`).
+### Add New Dotfiles
 
-- **chezmoi apply**: Apply dotfiles to your home directory
-- **chezmoi update**: Pull and apply latest changes
-
-### 3. DevPod
-
-DevPod is supported via `.chezmoiexternals/devpod.toml`, which ensures the DevPod binary is installed and available in your environment.
-
-### 4. VS Code Dev Containers
-
-- The `.devcontainer/` folder contains a `devcontainer.json` and a `Dockerfile` based on `ghcr.io/rio/toolbox:latest`.
-- Open the repo in VS Code and "Reopen in Container" to get a fully provisioned environment with all tools and dotfiles.
-
-### 5. GitHub Codespaces
-
-- This repo is Codespaces-ready. Just "Open in Codespaces" on GitHub and all dotfiles, tools, and configs will be provisioned automatically.
+```sh
+chezmoi add ~/.someconfig
+```
 
 ---
 
-## Highlights
+## Tools Included
 
-- **Shells**: zsh (default), bash
-- **Prompt**: [starship](https://starship.rs/) with custom theme
-- **Editor**: [Neovim](https://neovim.io/) (LazyVim-based), with plugins and extras
-- **Terminal**: [WezTerm](https://wezfurlong.org/wezterm/), [alacritty](https://alacritty.org/)
+- **Shell**: zsh, bash
+- **Prompt**: starship
+- **Editor**: Neovim (LazyVim)
+- **Terminal**: WezTerm, Alacritty
 - **Multiplexers**: tmux, zellij
-- **Tools**: Managed with [mise](https://mise.jdx.dev/) (see `.config/mise/config.toml`)
-- **Kubernetes**: k9s with custom skin
-- **Fonts**: DepartureMono (auto-installed)
-
----
-
-## Customization
-
-- All dotfiles are templated for local/remote/container/cloud detection
-- Add or modify tools in `.config/mise/config.toml`
-- Add external resources in `.chezmoiexternals/`
-- Add post-install scripts in `.chezmoiscripts/`
+- **Tools**: mise (version manager), fzf, zoxide, bat, lsd
 
 ---
 
 ## License
 
-These dotfiles are provided as-is for personal use and inspiration. Use at your own risk.
+MIT - Use at your own risk.

@@ -1,4 +1,5 @@
 .oh-my-zsh/cache/*
 **/*.zwc
 setup
-README.md
+chezmoi.toml.example
+dot_config/zsh/local.zsh

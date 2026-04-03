@@ -1,6 +1,6 @@
 [user]
-	name = Aadil Agwan
-	email = agwan96@gmail.com
+	name = {{ .git_user_name | default "Your Name" }}
+	email = {{ .git_user_email | default "your@email.com" }}
 
 [init]
 	defaultBranch = main
@@ -20,6 +20,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 
+{{- if .git_signingKey }}
 [commit]
     gpgsign = true
 
@@ -28,3 +29,4 @@
 
 [user]
     signingkey = {{ .git_signingKey }}
+{{- end }}

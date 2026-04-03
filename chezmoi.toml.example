@@ -1,0 +1,13 @@
+# User Configuration
+
+# Copy this file to ~/.chezmoi.toml (or ~/.config/chezmoi/chezmoi.toml on Linux)
+# and customize the values below.
+
+git_user_name = "Your Name"
+git_user_email = "your@email.com"
+
+# GPG signing key (optional - leave empty to disable commit signing)
+# git_signingKey = "YOUR_GPG_KEY_ID"
+
+# SSH key path (optional - defaults to ~/.ssh/id_ed25519)
+# ssh_key_path = "~/.ssh/id_ed25519"
