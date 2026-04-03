@@ -1,0 +1,11 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "catppuccin",
+  "share": "disabled",
+  "username": "aadil",
+  "tui": {
+    "scroll_acceleration": {
+      "enabled": true
+    }
+  }
+}
