@@ -1,0 +1,30 @@
+[user]
+	name = {{ .name }}
+	email = {{ .email }}
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = false
+
+[push]
+	autoSetupRemote = true
+
+[branch]
+	autoSetupMerge = true
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+[commit]
+    gpgsign = true
+
+[gpg]
+    program = gpg
+
+[user]
+    signingkey = {{ .gpg_signing_key }}

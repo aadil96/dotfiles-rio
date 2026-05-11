@@ -1,1 +1,7 @@
+.oh-my-zsh/cache/*
+**/*.zwc
+setup
+README.md
 dot_config/zsh/local.zsh
+dot_config/opencode/bun.lockb
+dot_config/opencode/package-lock.json
