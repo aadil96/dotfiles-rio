@@ -245,6 +245,9 @@
   },
   "permission": {
     "task": "deny",
+    "skill": {
+      "chezmoi-expert": "allow"
+    },
     "context7_*": "deny",
     "exa_*": "deny",
     "gh_grep_*": "deny",
@@ -430,5 +433,13 @@
   },
   "instructions": [
     "./tool/philosophy.md"
-  ]
+  ],
+  "skill": {
+    "chezmoi-expert": "allow",
+    "plan-protocol": "allow",
+    "plan-review": "allow",
+    "code-philosophy": "allow",
+    "code-review": "allow",
+    "frontend-philosophy": "allow"
+  }
 }

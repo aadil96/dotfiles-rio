@@ -99,6 +99,9 @@
       "**/kubeconfig": "deny",
       "**/.kube/config": "deny",
       "**/terraform.tfstate": "deny"
+    },
+    "skill": {
+      "chezmoi-expert": "allow"
     }
   }
 }
