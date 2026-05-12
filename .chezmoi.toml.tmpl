@@ -1,11 +1,15 @@
 {{- $remote := or (env "CODESPACES" | not | not) (env "SSH_CONNECTION" | not | not) (env "KUBERNETES_SERVICE_HOST" | not | not) (env "container" | not | not) (env "REMOTE_CONTAINERS" | not | not) (stat "/.dockerenv" | not | not) -}}
 sourceDir = {{ .chezmoi.sourceDir | quote }}
 
+{{ $name := promptStringOnce . "name" "Git user.name" }}
+{{ $email := promptStringOnce . "email" "Git user.email" }}
+{{ $gpg_key := promptStringOnce . "gpg_signing_key" "GPG key fingerprint" }}
+
 [data]
   remote = {{ $remote }}
-  name = "Aadil Agwan"
-  email = "agwan96@gmail.com"
-  gpg_signing_key = "78F642760954E0F9"
+  name = {{ $name | quote }}
+  email = {{ $email | quote }}
+  gpg_signing_key = {{ $gpg_key | quote }}
   github_token = ""
 
 {{- if not $remote }}
