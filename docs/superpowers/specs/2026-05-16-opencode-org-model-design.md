@@ -125,7 +125,34 @@ None in Phase 1.
 
 ## Exact File Contents
 
-### 1. CEO Agent — `dot_config/opencode/agents/ceo.md`
+### 1. Agent Directory Convention
+
+OpenCode auto-discovers agents in both `agent/` and `agents/`.
+
+#### Current State
+
+| Directory | Content | Status |
+|-----------|---------|--------|
+| `dot_config/opencode/agent/` | `coder.md`, `researcher.md`, `reviewer.md`, `scribe.md` | Pre-existing, historical |
+| `dot_config/opencode/agents/` | `ceo.md`, `cto.md`, `pm.md`, `finance.md`, `security.md`, `qa.md`, `devops.md` | New in Phase 1 |
+
+#### Decision
+
+- `agent/` is preserved for compatibility — no changes, no moves, no deletions
+- `agents/` is the forward path for all new agents
+- No semantic meaning is assigned to the directory names (no "execution vs organization" convention)
+- This avoids creating an artificial naming convention that would cause confusion later
+
+#### Future Migration
+
+If consolidation is ever warranted:
+- Migrate everything to `agents/`
+- Remove `agent/`
+- Add compatibility notes in chezmoi templates
+
+Until then: leave both directories untouched.
+
+### 2. CEO Agent — `dot_config/opencode/agents/ceo.md`
 
 ```markdown
 ---
@@ -166,7 +193,7 @@ Strategic executive. Reviews major initiatives, fundamental scope changes, and c
 - Only consulted during strategic events, not normal feature flow
 ```
 
-### 2. CTO Agent — `dot_config/opencode/agents/cto.md`
+### 3. CTO Agent — `dot_config/opencode/agents/cto.md`
 
 ```markdown
 ---
@@ -209,7 +236,7 @@ Chief Technology Officer. Owns architecture decisions, technology selection, and
 - Does not define test strategy
 ```
 
-### 3. PM Agent — `dot_config/opencode/agents/pm.md`
+### 4. PM Agent — `dot_config/opencode/agents/pm.md`
 
 ```markdown
 ---
@@ -250,7 +277,7 @@ Product Manager. Refines requirements, defines acceptance criteria, and ensures 
 - Does not make architecture or financial decisions
 ```
 
-### 4. Finance Agent — `dot_config/opencode/agents/finance.md`
+### 5. Finance Agent — `dot_config/opencode/agents/finance.md`
 
 ```markdown
 ---
@@ -292,7 +319,7 @@ Financial analyst. Evaluates costs, resource usage, and build-vs-buy trade-offs.
 - Does not define project scope
 ```
 
-### 5. Security Agent — `dot_config/opencode/agents/security.md`
+### 6. Security Agent — `dot_config/opencode/agents/security.md`
 
 ```markdown
 ---
@@ -335,7 +362,7 @@ Security officer. Evaluates risks, performs threat modeling, and ensures complia
 - Does not make architecture or financial decisions
 ```
 
-### 6. QA Agent — `dot_config/opencode/agents/qa.md`
+### 7. QA Agent — `dot_config/opencode/agents/qa.md`
 
 ```markdown
 ---
@@ -378,7 +405,7 @@ Quality assurance lead. Defines test strategy, sets quality gates, and validates
 - Does not make architecture decisions
 ```
 
-### 7. DevOps Agent — `dot_config/opencode/agents/devops.md`
+### 8. DevOps Agent — `dot_config/opencode/agents/devops.md`
 
 ```markdown
 ---
@@ -423,7 +450,7 @@ Platform and infrastructure specialist. Plans deployment strategy, observability
 
 ---
 
-### 8. Org-Routing Skill — `dot_config/opencode/skills/org-routing/SKILL.md`
+### 9. Org-Routing Skill — `dot_config/opencode/skills/org-routing/SKILL.md`
 
 ```markdown
 ---
@@ -484,7 +511,7 @@ Request received
 
 ---
 
-### 9. Org Governance Skill — `dot_config/opencode/skills/org-governance/SKILL.md`
+### 10. Org Governance Skill — `dot_config/opencode/skills/org-governance/SKILL.md`
 
 ```markdown
 ---
@@ -525,7 +552,7 @@ Organization agents receive context from the orchestrator, analyze using their s
 
 ---
 
-### 10. Decision Framework Skill — `dot_config/opencode/skills/decision-framework/SKILL.md`
+### 11. Decision Framework Skill — `dot_config/opencode/skills/decision-framework/SKILL.md`
 
 ```markdown
 ---
@@ -556,7 +583,7 @@ Every decision should capture:
 
 ---
 
-### 11. Architecture Principles Skill — `dot_config/opencode/skills/architecture-principles/SKILL.md`
+### 12. Architecture Principles Skill — `dot_config/opencode/skills/architecture-principles/SKILL.md`
 
 ```markdown
 ---
@@ -615,7 +642,7 @@ When choosing a technology, evaluate:
 
 ---
 
-### 12. Security Policies Skill — `dot_config/opencode/skills/security-policies/SKILL.md`
+### 13. Security Policies Skill — `dot_config/opencode/skills/security-policies/SKILL.md`
 
 ```markdown
 ---
@@ -673,7 +700,7 @@ description: >-
 
 ---
 
-### 13. Cost Optimization Skill — `dot_config/opencode/skills/cost-optimization/SKILL.md`
+### 14. Cost Optimization Skill — `dot_config/opencode/skills/cost-optimization/SKILL.md`
 
 ```markdown
 ---
