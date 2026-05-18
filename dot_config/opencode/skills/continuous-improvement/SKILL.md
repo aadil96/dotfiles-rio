@@ -37,11 +37,14 @@ Close the learning loop: analyze patterns across postmortems, decision history, 
 
 Every quarter (or when triggered by the orchestrator):
 
-### Step 1: Gather
-Retrieve recent records from agentmemory across categories:
-- `agentmemory_memory_recall(query="postmortem", limit=5)`
-- `agentmemory_memory_recall(query="decision-history", limit=5)`
-- `agentmemory_memory_recall(query="org-audit", limit=5)`
+### Step 1: Delegate and Gather
+Request domain owners to retrieve relevant records from their domain memory:
+- QA retrieves quality postmortems: `agentmemory_memory_recall(query="postmortem", limit=5)`
+- DevOps retrieves incident postmortems: `agentmemory_memory_recall(query="postmortem", limit=5)`
+- CTO retrieves architecture decisions: `agentmemory_memory_recall(query="decision-history", limit=5)`
+- PM retrieves scope decisions: `agentmemory_memory_recall(query="decision-history", limit=5)`
+- QA and DevOps retrieve routing patterns: `agentmemory_memory_recall(query="org-audit", limit=5)`
+- CTO retrieves process patterns: `agentmemory_memory_recall(query="org-audit", limit=5)`
 
 > **Note:** The quarterly review is a special batch operation. The standard 3-5 retrieval limit applies for individual agent queries, but during the review the orchestrator may gather up to 5 per category for comprehensive analysis.
 
@@ -96,12 +99,11 @@ Proposed improvements that are not yet approved should stay in working context u
 
 | Agent | When | Query | Max Results |
 |-------|------|-------|-------------|
-| Orchestrator | Before quarterly review | `query="continuous-improvement approved process changes"` | 3-5 |
 | CTO | Before architecture process change | `query="continuous-improvement architecture process"` | 3-5 |
 | PM | Before workflow change | `query="continuous-improvement workflow friction"` | 3-5 |
 
 ### Retrieval Rules
-- Always set `limit` to 3–5 (never request bulk dumps)
+- Agents must set `limit` to 3–5 (never request bulk dumps)
 - Apply a relevance threshold: skip results not directly related to current improvement context
 - **Summarize before injection** — never inject raw memory output into prompts
 - Format as: "Previously approved improvements: [summarized list of N entries]"

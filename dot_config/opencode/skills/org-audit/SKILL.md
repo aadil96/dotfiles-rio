@@ -59,13 +59,12 @@ If either condition is low, skip persistence.
 
 | Agent | When | Query | Max Results |
 |-------|------|-------|-------------|
-| Orchestrator | Before routing new work | `query="org-audit routing efficiency selection"` | 3-5 |
 | QA | During release audit | `query="org-audit routing failures quality"` | 3-5 |
 | DevOps | During deployment review | `query="org-audit routing deployment"` | 3-5 |
 | CTO | During architecture process review | `query="org-audit routing architecture oversight"` | 3-5 |
 
 ### Retrieval Rules
-- Always set `limit` to 3–5 (never request bulk dumps)
+- Agents must set `limit` to 3–5 (never request bulk dumps)
 - Apply a relevance threshold: skip results not directly related to current routing context
 - **Summarize before injection** — never inject raw memory output into prompts
 - Format as: "Routing patterns from past sessions: [summarized list of N entries]"
