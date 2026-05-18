@@ -361,9 +361,9 @@ generate_scaffold() {
     # Generate project.md
     local project_md="$output_dir/.opencode/project.md"
     if [[ ! -f "$project_md" || "$mode" == "force" || "$mode" == "merge" ]]; then
-        if [[ -f "$TEMPLATE_DIR/project.md.tmpl" ]]; then
+        if [[ -f "$TEMPLATE_DIR/project.md.template" ]]; then
             local content
-            content=$(<"$TEMPLATE_DIR/project.md.tmpl")
+            content=$(<"$TEMPLATE_DIR/project.md.template")
             content="${content//'{{ project_name }}'/$archetype-project}"
             printf '%s\n' "$content" > "$project_md"
             echo "  Create: project.md"
@@ -373,8 +373,8 @@ generate_scaffold() {
     # Generate stack.md
     local stack_md="$output_dir/.opencode/stack.md"
     if [[ ! -f "$stack_md" || "$mode" == "force" || "$mode" == "merge" ]]; then
-        if [[ -f "$TEMPLATE_DIR/stack.md.tmpl" ]]; then
-            cp "$TEMPLATE_DIR/stack.md.tmpl" "$stack_md"
+        if [[ -f "$TEMPLATE_DIR/stack.md.template" ]]; then
+            cp "$TEMPLATE_DIR/stack.md.template" "$stack_md"
             echo "  Create: stack.md"
         fi
     fi
@@ -386,7 +386,7 @@ generate_scaffold() {
             echo "  Skip: $comp stack sections (stack.md unchanged)"
             continue
         fi
-        local comp_stack="$TEMPLATE_DIR/components/$comp/stack.md.tmpl"
+        local comp_stack="$TEMPLATE_DIR/components/$comp/stack.md.template"
         if [[ -f "$comp_stack" ]]; then
             echo "" >> "$stack_md"
             cat "$comp_stack" >> "$stack_md"
